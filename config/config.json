@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "mamnooN@",
+    "database": "testing_mamn",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "dev_goseeko",
+    "password": "y3r?BaMkyk",
+    "database": "testing_mamn",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
