@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <script>
+        fetch('http://localhost:3000/apis/getCounties')
+            .then(response => response.json())
+            .then(data => {
+                // console.log(data)
+                let country_drop_down = document.getElementById("country_drop_down")
+                data.forEach(item => {
+                    // console.log(item)
+                    var option = document.createElement("option");
+                    option.text = item.name;
+                    option.value = item.id;
+                    country_drop_down.add(option);
+                })
+            });
+
+
+        function callStatesByCountry(country_id) {
+            fetch('http://localhost:3000/apis/getStatesByCountryId/'+country_id)
+                .then(response => response.json())
+                .then(data => {
+                    // console.log(data)
+                    let state_drop_down = document.getElementById("state_drop_down")
+                    state_drop_down.innerHTML = "<option value='0'>Please Select State</option>"
+                    data.forEach(item => {
+                        // console.log(item)
+                        var option = document.createElement("option");
+                        option.text = item.name;
+                        option.value = item.id;
+                        state_drop_down.add(option);
+                    })
+                });
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+
+
+
+
+
+    <form action="/apis/signup" method="post" , enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="name" /><br>
+        <input type="emai" name="email" placeholder="email" /><br>
+        <input type="text" name="contact" placeholder="contact" /><br>
+        <input type="text" name="alternative_contact" placeholder="altr contact" /><br>
+        <select onchange="callStatesByCountry(this.value)" id="country_drop_down" name="country">
+            <option value="0">Please Select Country</option>
+        </select>
+        <select id="state_drop_down" name="state">
+            <option value="0">Please Select State</option>
+        </select>
+        <input type="text" name="city" placeholder="city" /><br>
+        <input type="text" name="pin_code" placeholder="pin" /><br>
+        <input type="date" name="dob" placeholder="dob" /><br>
+        <input type="file" name="image" /><br>
+        <input type="submit" value="submit"></input>
+    </form>
+</body>
+
+</html>
